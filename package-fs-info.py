@@ -38,11 +38,17 @@ def build_database():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--load', default=None)
-    parser.add_argument('--save', default=None)
-    parser.add_argument('--orphant-files', action='store_true')
-    parser.add_argument('--nonexisting-files', action='store_true')
-    parser.add_argument('--stats', action='store_true')
+    parser.add_argument('--load', default=None, metavar='FILENAME',
+                        help='Load a previously saved database from FILENAME.')
+    parser.add_argument('--save', default=None, metavar='FILENAME',
+                        help='Save the database into FILENAME for later usage.')
+    parser.add_argument('--orphant-files', action='store_true',
+                        help='Print files that are not owned by a package.')
+    parser.add_argument('--nonexisting-files', action='store_true',
+                        help="Print files that belong to a package but "
+                             "don't exist in the file system.")
+    parser.add_argument('--stats', action='store_true',
+                        help="Print general information and statistics.")
     args = parser.parse_args()
 
     if args.load:
